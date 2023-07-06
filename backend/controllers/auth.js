@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
 //Register
 exports.RegisterUser = async (req, res) => {
   const newUser = new User({
@@ -35,8 +36,17 @@ exports.Login = async (req, res) => {
     if (originalPassword !== req.body.password) {
       return res.status(401).send("Wrong credentials!");
     }
+
+    //token
+    const acessToken = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.SECRETKEY,
+      { expiresIn: "3m" }
+    );
+    //hide password
     const { password, ...others } = user._doc;
-    res.status(200).send({ msg: "success login", others });
+
+    res.status(200).send({ msg: "success login", ...others, acessToken });
   } catch (error) {
     res.status(500).send(error);
   }

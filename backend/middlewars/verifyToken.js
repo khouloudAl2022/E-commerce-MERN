@@ -1,0 +1,26 @@
+const jwt = require("jsonwebtoken");
+
+const verifyToken = (req, res, next) => {
+  const authHeader = req.headers.token;
+  if (authHeader) {
+    jwt.verify(token, process.env.SECRETKEY, (err, user) => {
+      if (err) {
+        return res.status(403).send("Token is not valid !");
+      }
+      req.user = user;
+      next();
+    });
+  } else {
+    return res.status(401).send("you are not authenticated !");
+  }
+};
+const verifyTokenAndAuth = (req, res, next) => {
+  verifyToken(req, res, () => {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+      next();
+    } else {
+      return res.status(403).send("You are not allowed to do that ! ");
+    }
+  });
+};
+module.exports = { verifyToken, verifyTokenAndAuth };
