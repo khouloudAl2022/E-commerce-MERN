@@ -1,8 +1,12 @@
-const { EditUSer } = require("../controllers/user");
-const { verifyTokenAndAuth } = require("../middlewars/verifyToken");
+const { EditUSer, DeleteUser, GetUser } = require("../controllers/user");
+const {
+  verifyTokenAndAuth,
+  verifyTokenAndAdmin,
+} = require("../middlewars/verifyToken");
 
 const router = require("express").Router();
-
-router.put("/edit/:id", verifyTokenAndAuth, EditUSer);
-
+//edit
+router.put("/:id", verifyTokenAndAuth, EditUSer);
+router.delete("delete/id", verifyTokenAndAuth, DeleteUser);
+router.get("/find/:id", verifyTokenAndAdmin, GetUser);
 module.exports = router;
