@@ -1,5 +1,10 @@
-const userRoutes = require("express").Router();
+const Router = require("express").Router();
 
-userRoutes.get("/testuser", (req, res) => {
-  console.log("test success");
+Router.get("/usertest", (req, res) => {
+  res.send("test success");
 });
+Router.post("/posttest", (req, res) => {
+  const username = req.body.username;
+  res.send(`your user name is ${username}`);
+});
+module.exports = Router;
