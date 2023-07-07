@@ -1,4 +1,9 @@
-const { EditUSer, DeleteUser, GetUser } = require("../controllers/user");
+const {
+  EditUSer,
+  DeleteUser,
+  GetUser,
+  GetAllUser,
+} = require("../controllers/user");
 const {
   verifyTokenAndAuth,
   verifyTokenAndAdmin,
@@ -9,4 +14,6 @@ const router = require("express").Router();
 router.put("/:id", verifyTokenAndAuth, EditUSer);
 router.delete("delete/id", verifyTokenAndAuth, DeleteUser);
 router.get("/find/:id", verifyTokenAndAdmin, GetUser);
+router.get("/", GetAllUser);
+
 module.exports = router;

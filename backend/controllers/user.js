@@ -40,3 +40,16 @@ exports.GetUser = async (req, res) => {
     res.status(500).send("server error");
   }
 };
+//GET ALL USERS
+exports.GetAllUser = async (req, res) => {
+  const query = req.query.new;
+
+  try {
+    const users = query
+      ? await User.find().sort({ _id: -1 }).limit(1)
+      : await User.find();
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(500).send("server error");
+  }
+};
