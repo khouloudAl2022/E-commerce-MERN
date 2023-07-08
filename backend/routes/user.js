@@ -3,6 +3,7 @@ const {
   DeleteUser,
   GetUser,
   GetAllUser,
+  GetStats,
 } = require("../controllers/user");
 const {
   verifyTokenAndAuth,
@@ -15,5 +16,6 @@ router.put("/:id", verifyTokenAndAuth, EditUSer);
 router.delete("delete/id", verifyTokenAndAuth, DeleteUser);
 router.get("/find/:id", verifyTokenAndAdmin, GetUser);
 router.get("/", GetAllUser);
+router.get("/stats", GetStats);
 
 module.exports = router;

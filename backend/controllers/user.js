@@ -53,3 +53,18 @@ exports.GetAllUser = async (req, res) => {
     res.status(500).send("server error");
   }
 };
+//GET USER STATS
+exports.GetStats = async (req, res) => {
+  const date = new Date();
+  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+  const pipeline = [
+    { $match: { createdAt: { $gte: lastYear } } },
+    { $project: { month: { $month: "$createdAt" } } },
+    { $group: { _id: "$month", total: { sum: 1 } } },
+  ];
+  try {
+    const data = await User.aggregate(pipeline);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
