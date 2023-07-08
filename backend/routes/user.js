@@ -15,7 +15,7 @@ const router = require("express").Router();
 router.put("/:id", verifyTokenAndAuth, EditUSer);
 router.delete("delete/id", verifyTokenAndAuth, DeleteUser);
 router.get("/find/:id", verifyTokenAndAdmin, GetUser);
-router.get("/", GetAllUser);
-router.get("/stats", GetStats);
+router.get("/", verifyTokenAndAdmin, GetAllUser);
+router.get("/stats", verifyTokenAndAdmin, GetStats);
 
 module.exports = router;
