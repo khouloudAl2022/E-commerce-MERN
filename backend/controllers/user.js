@@ -58,12 +58,13 @@ exports.GetStats = async (req, res) => {
   const date = new Date();
   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
   const pipeline = [
-    { $match: { createdAt: { $gte: lastYear } } },
+    { $match: { createdAt: { $gt: lastYear } } },
     { $project: { month: { $month: "$createdAt" } } },
-    { $group: { _id: "$month", total: { sum: 1 } } },
+    { $group: { _id: "$month", total: { $sum: 1 } } },
   ];
   try {
     const data = await User.aggregate(pipeline);
+    res.status(200).send(data);
   } catch (error) {
     res.status(500).send(error);
   }
