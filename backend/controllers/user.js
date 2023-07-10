@@ -25,9 +25,9 @@ exports.EditUSer = async (req, res) => {
 exports.DeleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
-    res.status(200).send("User has been deleted ...");
+    res.status(200).send("User has been deleted...");
   } catch (error) {
-    res.status(500).send("server error");
+    res.status(500).send(error);
   }
 };
 //GET USER

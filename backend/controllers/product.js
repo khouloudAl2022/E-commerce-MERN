@@ -1,6 +1,6 @@
 const Product = require("../models/Product");
-// REGISTER
-exports.RegisterProduct = async (req, res) => {
+// CREATE
+exports.CreateProduct = async (req, res) => {
   const newProduct = new Product(req.body);
   try {
     const savedProduct = await newProduct.save();
