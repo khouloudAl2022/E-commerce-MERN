@@ -46,34 +46,23 @@ exports.GetProduct = async (req, res) => {
 exports.GetAllProduct = async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
-
   try {
     let products;
+
     if (qNew) {
       products = await Product.find().sort({ createdAt: -1 }).limit(1);
     } else if (qCategory) {
-      products = await Product.find({ categories: { $in: [qCategory] } });
+      products = await Product.find({
+        categories: {
+          $in: [qCategory],
+        },
+      });
     } else {
       products = await Product.find();
     }
-    res.status(200).send(products);
-  } catch (error) {
-    res.status(500).send("server error");
+
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json(err);
   }
 };
-//   //GET USER STATS
-//   exports.GetStats = async (req, res) => {
-//     const date = new Date();
-//     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-//     const pipeline = [
-//       { $match: { createdAt: { $gt: lastYear } } },
-//       { $project: { month: { $month: "$createdAt" } } },
-//       { $group: { _id: "$month", total: { $sum: 1 } } },
-//     ];
-//     try {
-//       const data = await User.aggregate(pipeline);
-//       res.status(200).send(data);
-//     } catch (error) {
-//       res.status(500).send(error);
-//     }
-//   };
