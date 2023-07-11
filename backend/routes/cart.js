@@ -1,4 +1,9 @@
-const { CreateCart, EditCart, DeleteCart } = require("../controllers/cart");
+const {
+  CreateCart,
+  EditCart,
+  DeleteCart,
+  GetUserCart,
+} = require("../controllers/cart");
 const {
   verifyTokenAndAuth,
   verifyToken,
@@ -9,7 +14,7 @@ const router = require("express").Router();
 router.post("/", verifyToken, CreateCart);
 router.put("/:id", verifyTokenAndAuth, EditCart);
 router.delete("/:id", verifyTokenAndAuth, DeleteCart);
-// router.get("/find/:id", GetUserCart);
+router.get("/find/:userId", verifyTokenAndAuth, GetUserCart);
 // router.get("/", GetAllProduct);
 
 module.exports = router;

@@ -34,15 +34,15 @@ exports.DeleteCart = async (req, res) => {
     res.status(500).send("server error");
   }
 };
-// //GET PRODUCT
-// exports.GetProduct = async (req, res) => {
-//   try {
-//     const product = await Product.findById(req.params.id);
-//     res.status(200).send(product);
-//   } catch (error) {
-//     res.status(500).send("server error");
-//   }
-// };
+//GET USER CART
+exports.GetUserCart = async (req, res) => {
+  try {
+    const cart = await Cart.findOne({ userId: req.params.userId });
+    res.status(200).send(cart);
+  } catch (error) {
+    res.status(500).send("server error");
+  }
+};
 // //GET ALL PRODUCTS
 // exports.GetAllProduct = async (req, res) => {
 //   const qNew = req.query.new;
