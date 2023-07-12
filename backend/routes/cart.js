@@ -12,11 +12,11 @@ const {
 } = require("../middlewars/verifyToken");
 
 const router = require("express").Router();
-//CREATE
+
 router.post("/", verifyToken, CreateCart);
-router.put("/:id", verifyTokenAndAuth, EditCart);
-router.delete("/:id", verifyTokenAndAuth, DeleteCart);
-router.get("/find/:userId", verifyTokenAndAuth, GetUserCart);
-router.get("/", verifyTokenAndAdmin, GetAllCart);
+router.put("/:id", EditCart);
+router.delete("/:id", DeleteCart);
+router.get("/find/:userId", GetUserCart);
+router.get("/", GetAllCart);
 
 module.exports = router;

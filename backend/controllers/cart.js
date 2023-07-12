@@ -15,16 +15,15 @@ exports.EditCart = async (req, res) => {
   try {
     const updatedCart = await Cart.findByIdAndUpdate(
       req.params.id,
-      {
-        $set: req.body,
-      },
+      { $set: req.body },
       { new: true }
     );
     res.status(200).send(updatedCart);
-  } catch (err) {
-    res.status(500).send(err);
+  } catch (error) {
+    res.status(500).send(error);
   }
 };
+
 // //DELETE
 exports.DeleteCart = async (req, res) => {
   try {
