@@ -9,8 +9,8 @@ exports.Payment = (req, res) => {
     (stripeErr, stripeRest) => {
       if (stripeErr) {
         res.status(500).send(stripeErr);
-      }else{
-        res.status(200).send(stripeRest)
+      } else {
+        res.status(200).send(stripeRest);
       }
     }
   );
