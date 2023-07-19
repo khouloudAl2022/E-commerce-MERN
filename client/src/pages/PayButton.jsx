@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
-
 const KEY =
-  "pk_test_51NTBLaEsMypiASpd766MRODObtqnQiZbeaLfBMS7yumUzAmf6LEGRKnnGUtnwntJ20LRjhsqNbcq9qjj82rVuVDq00tK9kXCqq";
-const Pay = () => {
+  "pk_test_51NUe30DGVlSZvv6ZwLxCG7iXkShogtjuKDlty1IKf6osiovFmZQnb7l4eLEigBA9E17c6Fxk3UV0UAXclbuuJvP600Pnk5dMFj";
+const PayButton = () => {
   const [stripeToken, setStripeToken] = useState(null);
+
   const onToken = (token) => {
     setStripeToken(token);
   };
-
-  useEffect =
-    (() => {
-      const makeRequest = async () => {
-        try {
-          axios.post()
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    },
-    [stripeToken]);
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await axios.post("http://localhost:5000/api/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: 2000,
+        });
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken]);
   return (
     <div
       style={{
@@ -44,7 +47,7 @@ const Pay = () => {
             border: "none",
             width: 120,
             borderRadius: 5,
-            padding: "20px",
+            padding : "20px",
             backgroundColor: "black",
             color: "white",
             fontWeight: "600",
@@ -58,4 +61,4 @@ const Pay = () => {
   );
 };
 
-export default Pay;
+export default PayButton;
