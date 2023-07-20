@@ -41,7 +41,9 @@ const PayButton = () => {
     >
       {stripeToken ? (
         <span>
-          Please wait ... <Spinner animation="border" variant="secondary" />
+          <Spinner animation="grow" size="sm" />
+          <Spinner animation="grow" size="sm" />
+          <Spinner animation="grow" size="sm" />
         </span>
       ) : (
         <StripeCheckout

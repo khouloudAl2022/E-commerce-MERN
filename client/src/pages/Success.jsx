@@ -5,10 +5,9 @@ const Success = () => {
   return (
     <Container>
       <h2>Checkout Successful</h2>
-      <StyledImage
-        src="https://www.freeiconspng.com/uploads/success-icon-10.png"
-        alt="success"
-      />
+      <div style={{ backgroundColor: "red", position: "relative" }}>
+        <StyledImage src="https://i.gifer.com/7efs.gif" alt="GIF" />
+      </div>
       <p>Your order might take some time to process.</p>
       <p>Check your order status at your profile after about 10mins.</p>
       <p>
