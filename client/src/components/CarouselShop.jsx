@@ -31,7 +31,11 @@ const WaveSpan = styled.span`
   -webkit-background-clip: text;
   text-transform: uppercase;
   animation: ${flip} 2s infinite;
-  animation-delay: ${(props) => `calc(0.2s * ${props.index})`};
+  animation-delay: ${(props) =>
+    `calc(0.2s * ${
+      // @ts-ignore
+      props.index
+    })`};
 `;
 const H3 = styled.h3`
   display: flex;
@@ -53,7 +57,11 @@ const CarouselShop = () => {
           />
           <WaveText className="waviy">
             {waveText.split("").map((char, index) => (
-              <WaveSpan key={index} index={index + 1}>
+              <WaveSpan
+                key={index}
+                // @ts-ignore
+                index={index + 1}
+              >
                 {char}
               </WaveSpan>
             ))}

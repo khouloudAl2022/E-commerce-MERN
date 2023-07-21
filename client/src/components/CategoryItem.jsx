@@ -1,3 +1,6 @@
+//TODO:
+// -* change the title and buttom to ligth colo
+
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -7,12 +10,21 @@ const Container = styled.div`
   margin: 3px;
   height: 70vh;
   position: relative;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(50%);
+  }
 `;
+/*   transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  } */
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+
   ${mobile({ height: "20vh" })}
 `;
 
@@ -26,6 +38,15 @@ const Info = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: none;
+  z-index: 1;
+  position: absolute;
+
+  ${Container}:hover & {
+    opacity: 1;
+  }
 `;
 
 const Title = styled.h1`
@@ -41,7 +62,7 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: 600;
 `;
-const CategoryItem = () => {
+const CategoryItem = ({ item }) => {
   return (
     <Container>
       <Link to={`/products/${item.cat}`}>
