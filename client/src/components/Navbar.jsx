@@ -6,6 +6,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
 
+//TODO: Add responsive and mobile
 const Container = styled.div`
   height: 60px;
 `;
@@ -44,6 +45,7 @@ const Center = styled.div`
 `;
 const Logo = styled.h1`
   font-weight: bold;
+  color:#515151
 `;
 const Right = styled.div`
 flex: 1;
