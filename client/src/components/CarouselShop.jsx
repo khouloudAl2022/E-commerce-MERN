@@ -34,6 +34,7 @@ const WaveSpan = styled.span`
   animation-delay: ${(props) => `calc(0.2s * ${props.index})`};
 `;
 const H3 = styled.h3`
+  display: flex;
   color: #414141;
   margin-left: 10%;
   width: 100%;
