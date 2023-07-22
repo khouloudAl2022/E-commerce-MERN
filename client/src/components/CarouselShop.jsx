@@ -1,7 +1,8 @@
+//FIXME:  sliders are abouve the navbar
+
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import { keyframes, styled } from "styled-components";
-
 const Container = styled.div`
   width: 100%;
   height: 70%;

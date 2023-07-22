@@ -3,15 +3,16 @@ import Navbar from "../components/Navbar";
 import CarouselShop from "components/CarouselShop";
 import Categories from "../components/Categories";
 import Announcement from "../components/Announcement";
+import Products from "components/Products";
 
 const Home = () => {
   return (
     <div>
       <Announcement />
-
       <Navbar />
       <CarouselShop />
       <Categories />
+      <Products/>
     </div>
   );
 };
