@@ -5,10 +5,11 @@ import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { Link } from "react-router-dom";
 import { mobile } from "../responsive";
+import { Badge } from "@mui/material";
 
 const Container = styled.div`
   height: 60px;
@@ -17,12 +18,12 @@ const Container = styled.div`
 
 const FixedNavbar = styled.div`
   position: fixed;
-  top: 0;
+  top: 3%;
   left: 0;
   right: 0;
   background-color: ${({ isTransparent }) =>
     isTransparent ? "transparent" : "#ffffff"};
-  z-index: 1000;
+  z-index: 1;
   transition: background-color 0.3s ease;
 `;
 
@@ -31,7 +32,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   ${mobile({ padding: "10px 0px" })}
 `;
 
@@ -44,6 +44,7 @@ const Left = styled.div`
 const Language = styled.div`
   font-size: 14px;
   cursor: pointer;
+  margin-top: 1vh;
   ${mobile({ display: "none" })}
 `;
 
@@ -52,6 +53,7 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 25px;
+  margin-bottom: 2%;
   padding: 5px;
 `;
 
@@ -61,6 +63,8 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  background: transparent;
+
   ${mobile({ width: "50px" })}
 `;
 
@@ -70,8 +74,7 @@ const Center = styled.div`
 `;
 
 const Logo = styled.h1`
-  display: flex;
-  flex-wrap: wrap;
+  text-align: center;
   font-weight: bold;
   color: #515151;
   ${mobile({ fontSize: "24px" })}
@@ -102,9 +105,9 @@ const Navbar = () => {
 
       // Determine when to add the transparent background
       if (scrollY > 100) {
-        setIsTransparent(true);
-      } else {
         setIsTransparent(false);
+      } else {
+        setIsTransparent(true);
       }
     };
 
@@ -125,6 +128,7 @@ const Navbar = () => {
             <Language>EN</Language>
             <SearchContainer>
               <Input placeholder="Search" />
+              
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 style={{ color: "#bdbdbd" }}
@@ -139,10 +143,11 @@ const Navbar = () => {
             <MenuItem>SIGN IN</MenuItem>
             <Link to="/cart">
               <MenuItem>
-                <FontAwesomeIcon
-                  icon={faCartShopping}
-                  style={{ color: "#292f30", fontSize: "30px" }}
-                />
+                <Badge badgeContent={4} color="primary">
+                  <ShoppingCartOutlinedIcon
+                    style={{ color: "#292f30", fontSize: "30px" }}
+                  />
+                </Badge>
               </MenuItem>
             </Link>
           </Right>
