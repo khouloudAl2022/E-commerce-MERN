@@ -1,5 +1,6 @@
 // @ts-nocheck
 //TODO: Add responsive and mobile
+//FIXME: fix the searchbar make the icon inside the input and make more soft
 import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

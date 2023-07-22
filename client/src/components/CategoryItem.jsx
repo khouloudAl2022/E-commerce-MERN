@@ -8,7 +8,7 @@ import { mobile } from "../responsive";
 const Container = styled.div`
   flex: 1;
   margin: 3px;
-  height: 70vh;
+  height: 80vh;
   position: relative;
   cursor: pointer;
   &:hover {

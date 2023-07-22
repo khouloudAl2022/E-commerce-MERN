@@ -9,6 +9,7 @@ const Home = () => {
       <Navbar></Navbar>
       <CarouselShop />
       <Categories />
+      
     </div>
   );
 };
