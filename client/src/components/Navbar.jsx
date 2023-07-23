@@ -23,7 +23,7 @@ const FixedNavbar = styled.div`
   right: 0;
   background-color: ${({ isTransparent }) =>
     isTransparent ? "transparent" : "#ffffff"};
-  z-index: 1;
+  z-index: 4;
   transition: background-color 0.3s ease;
 `;
 

@@ -22,15 +22,15 @@ export const categories = [
 export const popularProducts = [
   {
     id: 1,
-    img: "https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
+    img: "https://cdn.fashiola.fr/L599658726/zara-sandales-a-talons-en-cuir-fronce.jpg",
   },
   {
     id: 2,
-    img: "https://ae04.alicdn.com/kf/S063c4d7d7fb5403790a435913892c396B.jpg",
+    img: "https://static.zara.net/photos///2023/V/1/2/p/2710/120/800/2/w/0/2710120800_6_1_1.jpg?ts=1678101755159",
   },
   {
     id: 3,
-    img: "https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",
+    img: "https://cdn.mall.adeptmind.ai/https%3A%2F%2Fstatic.zara.net%2Fphotos%2F%2F%2F2023%2FV%2F0%2F1%2Fp%2F2812%2F748%2F120%2F2%2Fw%2F1920%2F2812748120_6_1_1.jpg%3Fts%3D1676620669083_640x.webp",
   },
   {
     id: 4,
@@ -38,18 +38,18 @@ export const popularProducts = [
   },
   {
     id: 5,
-    img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3VJjogqf1jWteXXvwWM8IDm2RJ-6xkWkF-OJtCZIgaT9cRfaOEVbebQOOu5oCIkI_8F4&usqp=CAU",
   },
   {
     id: 6,
-    img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
+    img: "https://img-3.journaldesfemmes.fr/T54yyhXCFHEcx1_kdgHYjWFS7qk=/600x/smart/e1fd9fd5042e4039b87c560e162bc4e3/ccmcms-jdf/17977312.jpg",
   },
   {
     id: 7,
-    img: "https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+    img: "https://static.zara.net/photos///2023/V/0/3/p/6201/650/500/2/w/824/6201650500_6_2_1.jpg?ts=1681210615586",
   },
   {
     id: 8,
-    img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
+    img: "https://static.zara.net/photos///2023/V/0/1/p/2487/707/942/2/w/824/2487707942_2_1_1.jpg?ts=1676371088334",
   },
 ];
