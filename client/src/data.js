@@ -34,7 +34,7 @@ export const popularProducts = [
   },
   {
     id: 4,
-    img: "https://sf1.mariefrance.fr/wp-content/uploads/sites/5/2018/11/0387184808_1_1_1-296x410.jpg",
+    img: "https://cdn.mall.adeptmind.ai/https%3A%2F%2Flp2.hm.com%2Fhmgoepprod%3Fset%3Dquality%255B79%255D%252Csource%255B%252Ff2%252F8f%252Ff28f6e26eb85f917dc16770ed84fa30067d2f972.jpg%255D%252Corigin%255Bdam%255D%252Ccategory%255B%255D%252Ctype%255BDESCRIPTIVESTILLLIFE%255D%252Cres%255Bm%255D%252Chmver%255B2%255D%26call%3Durl%255Bfile%3A%2Fproduct%2Fmain%255D_640x.jpg",
   },
   {
     id: 5,

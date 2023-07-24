@@ -3,11 +3,13 @@ import React from "react";
 import { styled } from "styled-components";
 import Product from "./Product";
 const Container = styled.div`
-  padding: 20px;
-  display: flex;
+margin-left:100px;
+margin-right:100px;
+display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
+
 const Products = () => {
   return (
     <Container>

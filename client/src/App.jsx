@@ -22,7 +22,7 @@ function App() {
           />
           <Route path="/pay" element={<PayButton></PayButton>} />
           <Route
-            path="/products/:category"
+            path="/products"
             element={<ProductList></ProductList>}
           />
           <Route path="/login" element={<Login></Login>} />

@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: center;
   font-size: 14px;
   font-weight: 500;
-  z-index: 4;
+  z-index: 9                                                                                            ;
 `;
 
 const Announcement = () => {

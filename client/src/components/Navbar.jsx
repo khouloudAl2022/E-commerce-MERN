@@ -12,14 +12,15 @@ import { mobile } from "../responsive";
 import { Badge } from "@mui/material";
 
 const Container = styled.div`
+margin-top:1.5%;
+
   height: 60px;
   ${mobile({ height: "50px" })}
 `;
 
 const FixedNavbar = styled.div`
   position: fixed;
-  top: 3%;
-  left: 0;
+  left: 0; 
   right: 0;
   background-color: ${({ isTransparent }) =>
     isTransparent ? "transparent" : "#ffffff"};

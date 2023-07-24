@@ -4,6 +4,8 @@ import CarouselShop from "components/CarouselShop";
 import Categories from "../components/Categories";
 import Announcement from "../components/Announcement";
 import Products from "components/Products";
+import Newsletter from "../components/Newsletter";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -12,7 +14,9 @@ const Home = () => {
       <Navbar />
       <CarouselShop />
       <Categories />
-      <Products/>
+      <Products />
+      <Newsletter />
+      <Footer />
     </div>
   );
 };

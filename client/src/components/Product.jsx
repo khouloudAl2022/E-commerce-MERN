@@ -3,14 +3,15 @@ import { styled } from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+
 const Info = styled.div`
   opacity: 0;
+
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
   z-index: 3;
   display: flex;
   align-items: center;
@@ -21,9 +22,12 @@ const Info = styled.div`
 
 const Container = styled.div`
   flex: 1;
-  margin: 5px;
-  height: 390px;
-  font-size:40%;
+  // margin-left: -30px;
+  // margin-right: -30px;
+margin-top:1%;
+margin-bottom:2%;
+  min-width: 20vw;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,19 +36,24 @@ const Container = styled.div`
   &:hover ${Info} {
     opacity: 1;
   }
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
 `;
 
 const Circle = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: white;
+  background-color: transparent;
   position: absolute;
 `;
 
 const Image = styled.img`
-  height: 75%;
-  
+  margin: 0%;
+  height: 60%;
+  width: 80%;
+  object-fit: contain;
   z-index: 2;
 `;
 
