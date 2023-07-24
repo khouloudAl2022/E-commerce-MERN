@@ -5,6 +5,8 @@ import { IoAdd } from "react-icons/io5";
 import { AiOutlineMinus } from "react-icons/ai";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
+import Newsletter from "components/Newsletter";
+import Footer from "./Footer";
 
 const Container = styled.div``;
 
@@ -62,22 +64,6 @@ const FilterTitle = styled.span`
   font-weight: 200;
 `;
 
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
-`;
-
-const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-`;
-
-const FilterSizeOption = styled.option``;
-
 const AddContainer = styled.div`
   width: 50%;
   display: flex;
@@ -115,7 +101,16 @@ const Button = styled.button`
     color: white;
   }
 `;
-
+const FilterColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+  margin: 0px 5px;
+  cursor: pointer;
+`;
+const Filtersize = styled.div``;
+const FiltersizeOption = styled.option``;
 const Product = () => {
   return (
     <Container>
@@ -138,10 +133,17 @@ const Product = () => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
+              <FilterColor color="black"></FilterColor>
+              <FilterColor color="darkblue"></FilterColor>
+              <FilterColor color="gray"></FilterColor>
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize></FilterSize>
+              <Filtersize name="Size">
+                <FiltersizeOption>Xs</FiltersizeOption>
+                <Option>Xs</Option>
+                <Option>Xs</Option>
+              </Filtersize>
             </Filter>
           </FilterContainer>
           <AddContainer>
@@ -154,6 +156,8 @@ const Product = () => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
+      <Newsletter />
+      <Footer />
     </Container>
   );
 };

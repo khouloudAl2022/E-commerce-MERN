@@ -45,10 +45,10 @@ const Wrapper = styled.div`
   padding-top: 100px;
 `;
 const Select = styled.select`
-  padding: 10px;
-  margin-right: 20px;
-  ${mobile({ margin: "10px 0px" })}
+margin-left: 10px;
+padding: 5px;
 `;
+
 const Option = styled.option``;
 
 const ProductList = () => {
