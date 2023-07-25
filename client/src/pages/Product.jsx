@@ -109,7 +109,10 @@ const FilterColor = styled.div`
   margin: 0px 5px;
   cursor: pointer;
 `;
-const Filtersize = styled.div``;
+const Filtersize = styled.select`
+  margin-left: 10px;
+  padding: 5px;
+`;
 const FiltersizeOption = styled.option``;
 const Product = () => {
   return (
@@ -141,8 +144,6 @@ const Product = () => {
               <FilterTitle>Size</FilterTitle>
               <Filtersize name="Size">
                 <FiltersizeOption>Xs</FiltersizeOption>
-                <Option>Xs</Option>
-                <Option>Xs</Option>
               </Filtersize>
             </Filter>
           </FilterContainer>

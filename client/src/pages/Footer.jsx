@@ -13,10 +13,14 @@ import {
 
 const Container = styled.div`
   display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
+  margin-left: 5%;
+
   flex: 1;
   display: flex;
   flex-direction: column;
