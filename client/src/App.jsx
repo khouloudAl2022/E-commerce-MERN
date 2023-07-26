@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 function App() {
+  const user = true;
   return (
     <div className="App">
       <BrowserRouter>
@@ -20,17 +21,17 @@ function App() {
             path="/"
             element={<Home></Home>}
           />
-          <Route path="/pay" element={<PayButton></PayButton>} />
+          <Route exact path="/pay" element={<PayButton></PayButton>} />
           <Route
-            path="/products"
+            path="/products/:category"
             element={<ProductList></ProductList>}
           />
-          <Route path="/login" element={<Login></Login>} />
-          <Route path="/register" element={<Register></Register>} />
+          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/register" element={<Register></Register>}></Route>
 
-          <Route path="/product" element={<Product></Product>} />
-          <Route path="/success" element={<Success></Success>} />
-          <Route path="/cart" element={<Cart></Cart>} />
+          <Route exact path="/product/:id" element={<Product></Product>} />
+          <Route exact path="/success" element={<Success></Success>} />
+          <Route exact path="/cart" element={<Cart></Cart>} />
         </Routes>
       </BrowserRouter>
     </div>
