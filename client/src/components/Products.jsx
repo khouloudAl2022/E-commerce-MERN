@@ -1,16 +1,20 @@
 import { popularProducts } from "../data";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Product from "./Product";
 const Container = styled.div`
-margin-left:100px;
-margin-right:100px;
-display: flex;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 `;
 
-const Products = () => {
+const Products = ({ cat, filters, sort }) => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFleteredProducts] = useState([]);
+  useEffect(() => {}, [cat]);
+
   return (
     <Container>
       {popularProducts.map((item) => (

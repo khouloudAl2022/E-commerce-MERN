@@ -1,6 +1,6 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
 import { styled } from "styled-components";
-
 const Container = styled.div`
   position: fixed;
   width: 100%;
@@ -23,27 +23,55 @@ const AnnouncContainer = styled.div`
 `;
 const Span = styled.span`
   margin: 30px;
-  color: ${(props) => props.type === "title1" && "#00ca8d"};
-  margin-right:${props=>props.type==="title1"&&"2rem"}
-  margin-right:${props=>props.type==="title2"&&"2rem"}
+  color: ${(props) =>
+    // @ts-ignore
+    props.type === "title1" && "#00ca8d"};
+  margin-right:${(props) =>
+    // @ts-ignore
+    props.type === "title1" && "2rem"}
+  margin-right:${(props) =>
+    // @ts-ignore
+    props.type === "title2" && "2rem"}
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+  
 
 `;
 
 const Announcement = () => {
   return (
     <Container>
-      <AnnouncContainer>
-        <Span type="title1">
-          Super Deal! Free Shipping on Orders Over $50 //
-        </Span>
-        <Span type="title2">20% purchase discount. Shop Now </Span>
-      </AnnouncContainer>
-      <AnnouncContainer>
-        <Span type="title1">
-          Super Deal! Free Shipping on Orders Over $50 //{" "}
-        </Span>
-        <Span type="title2">20% purchase discount. Shop Now </Span>
-      </AnnouncContainer>
+      <Marquee>
+        <AnnouncContainer>
+          <Span
+            // @ts-ignore
+            type="title1"
+          >
+            Super Deal! Free Shipping on Orders Over $50 //
+          </Span>
+          <Span
+            // @ts-ignore
+            type="title2"
+          >
+            20% purchase discount. Shop Now{" "}
+          </Span>
+        </AnnouncContainer>
+        <AnnouncContainer>
+          <Span
+            // @ts-ignore
+            type="title1"
+          >
+            Super Deal! Free Shipping on Orders Over $50 //{" "}
+          </Span>
+          <Span
+            // @ts-ignore
+            type="title2"
+          >
+            20% purchase discount. Shop Now{" "}
+          </Span>
+        </AnnouncContainer>
+      </Marquee>
     </Container>
   );
 };

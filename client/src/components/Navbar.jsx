@@ -12,7 +12,7 @@ import { mobile } from "../responsive";
 import { Badge } from "@mui/material";
 
 const Container = styled.div`
-margin-top:1.5%;
+  margin-top: 1.5%;
 
   height: 60px;
   ${mobile({ height: "50px" })}
@@ -20,7 +20,7 @@ margin-top:1.5%;
 
 const FixedNavbar = styled.div`
   position: fixed;
-  left: 0; 
+  left: 0;
   right: 0;
   background-color: ${({ isTransparent }) =>
     isTransparent ? "transparent" : "#ffffff"};
@@ -78,6 +78,7 @@ const Logo = styled.h1`
   text-align: center;
   font-weight: bold;
   color: #515151;
+
   ${mobile({ fontSize: "24px" })}
 `;
 
@@ -94,6 +95,9 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px", flexWrap: "wrap" })}
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const Navbar = () => {
@@ -129,7 +133,7 @@ const Navbar = () => {
             <Language>EN</Language>
             <SearchContainer>
               <Input placeholder="Search" />
-              
+
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 style={{ color: "#bdbdbd" }}
@@ -137,12 +141,15 @@ const Navbar = () => {
             </SearchContainer>
           </Left>
           <Center>
-            <Logo>KikiShop.</Logo>
+          <StyledLink to="/">
+      <Logo>KikiShop.</Logo>
+    </StyledLink>
+
           </Center>
           <Right>
             <MenuItem>REGISTER</MenuItem>
             <MenuItem>SIGN IN</MenuItem>
-            <Link to="/cart">
+            <Link to="/cart" style={{ textDecoration: "none" }}>
               <MenuItem>
                 <Badge badgeContent={4} color="primary">
                   <ShoppingCartOutlinedIcon
