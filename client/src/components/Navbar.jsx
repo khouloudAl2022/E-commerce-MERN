@@ -10,6 +10,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 import { mobile } from "../responsive";
 import { Badge } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   margin-top: 1.5%;
@@ -101,6 +102,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Navbar = () => {
+  const cart=useSelector()
   const [isTransparent, setIsTransparent] = useState(false);
 
   useEffect(() => {
