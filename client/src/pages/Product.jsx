@@ -25,6 +25,8 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 90vh;
+  margin-right: 5%;
+
   object-fit: cover;
   ${mobile({ height: "40vh" })}
 `;
@@ -119,17 +121,26 @@ const FiltersizeOption = styled.option``;
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
   useEffect(() => {
-    const getProduct = async (id) => {
+    const getProduct = async () => {
       try {
         const res = await axios.get(`/api/products/find/${id}`);
+        console.log("getoneprod", res.data);
         setProduct(res.data);
-        console.log("getoneprod", product);
       } catch (error) {}
     };
     getProduct();
   }, [id]);
+  const handleQuantity = (type) => {
+    type === "dec" && quantity > 0
+      ? setQuantity(quantity - 1)
+      : setQuantity(quantity + 1);
+  };
   return (
     <Container>
       <Announcement />
@@ -137,36 +148,33 @@ const Product = () => {
 
       <Wrapper>
         <ImgContainer>
-          <Image src="https://catalog.21buttons.com/3c16c4652b199d35fd119f9f5655e175fcf11ff9.smedium.jpg" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>heeloooooo</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            delectus, voluptate animi rerum voluptatem quaerat? Ipsum officiis,
-            soluta ea tempora illum praesentium at quibusdam ex officia rerum
-            magni ipsa! Beatae.
-          </Desc>
-          <Price>$ 50</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price>{product.price}DT</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black"></FilterColor>
-              <FilterColor color="darkblue"></FilterColor>
-              <FilterColor color="gray"></FilterColor>
+              {product.color?.map((c) => (
+                <FilterColor color={c} key={c}></FilterColor>
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <Filtersize name="Size">
-                <FiltersizeOption>Xs</FiltersizeOption>
+                {product.size?.map((s) => (
+                  <FiltersizeOption key={s}>{s}</FiltersizeOption>
+                ))}
               </Filtersize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <AiOutlineMinus />
-              <Amount>4</Amount>
-              <IoAdd />
+              <AiOutlineMinus onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <IoAdd onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>
