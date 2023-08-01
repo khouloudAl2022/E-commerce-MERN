@@ -137,9 +137,11 @@ const Product = () => {
     getProduct();
   }, [id]);
   const handleQuantity = (type) => {
-    type === "dec" && quantity > 0
-      ? setQuantity(quantity - 1)
-      : setQuantity(quantity + 1);
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
   };
   return (
     <Container>
@@ -158,12 +160,16 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} key={c}></FilterColor>
+                <FilterColor
+                  color={c}
+                  key={c}
+                  onChange={() => setColor(c)}
+                ></FilterColor>
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <Filtersize name="Size">
+              <Filtersize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <FiltersizeOption key={s}>{s}</FiltersizeOption>
                 ))}
