@@ -102,7 +102,8 @@ const StyledLink = styled(Link)`
 `;
 
 const Navbar = () => {
-  const cart=useSelector()
+  const quantity = useSelector((state) => state.cart.quantity);
+  console.log(quantity);
   const [isTransparent, setIsTransparent] = useState(false);
 
   useEffect(() => {
@@ -143,17 +144,16 @@ const Navbar = () => {
             </SearchContainer>
           </Left>
           <Center>
-          <StyledLink to="/">
-      <Logo>KikiShop.</Logo>
-    </StyledLink>
-
+            <StyledLink to="/">
+              <Logo>KikiShop.</Logo>
+            </StyledLink>
           </Center>
           <Right>
             <MenuItem>REGISTER</MenuItem>
             <MenuItem>SIGN IN</MenuItem>
             <Link to="/cart" style={{ textDecoration: "none" }}>
               <MenuItem>
-                <Badge badgeContent={4} color="primary">
+                <Badge badgeContent={quantity} color="primary">
                   <ShoppingCartOutlinedIcon
                     style={{ color: "#292f30", fontSize: "30px" }}
                   />
