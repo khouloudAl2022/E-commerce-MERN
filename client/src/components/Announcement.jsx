@@ -2,7 +2,7 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import { styled } from "styled-components";
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 30px;
   background-color:  background-color: rgba(255, 255, 255, 0.5);
@@ -14,7 +14,7 @@ const Container = styled.div`
   padding:1rem0;
   font-size: 14px;
   font-weight: 500;
-  z-index: 9;
+  z-index: 200;
 `;
 const AnnouncContainer = styled.div`
   display: flex;

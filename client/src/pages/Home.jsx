@@ -6,16 +6,21 @@ import Announcement from "../components/Announcement";
 import Products from "components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "./Footer";
+import { styled } from "styled-components";
 
 const Home = () => {
   return (
     <div>
-      <Announcement />
       <Navbar />
+      <Announcement />
+
       <CarouselShop />
       <Categories />
+
       <Products />
+
       <Newsletter />
+
       <Footer />
     </div>
   );

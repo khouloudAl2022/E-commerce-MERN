@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { mobile } from "../responsive";
 import { styled } from "styled-components";
 import { IoAdd } from "react-icons/io5";
@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Newsletter from "components/Newsletter";
 import Footer from "./Footer";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Container = styled.div``;
 
@@ -115,6 +117,19 @@ const Filtersize = styled.select`
 `;
 const FiltersizeOption = styled.option``;
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState();
+  useEffect(() => {
+    const getProduct = async (id) => {
+      try {
+        const res = await axios.get(`/api/products/find/${id}`);
+        setProduct(res.data);
+        console.log("getoneprod", product);
+      } catch (error) {}
+    };
+    getProduct();
+  }, [id]);
   return (
     <Container>
       <Announcement />

@@ -113,7 +113,6 @@ const ProductPrice = styled.div`
 const Hr = styled.hr`
   background-color: #c5c5c5;
   height: 2px;
-  width: 90%;
   border: none;
 `;
 const SummaryTitle = styled.h1`

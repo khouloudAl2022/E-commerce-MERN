@@ -3,8 +3,8 @@ import { mobile } from "../responsive";
 import { styled } from "styled-components";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 const Container = styled.div`
+  border-top: 1px solid #e9e9e9;
   height: 60vh;
-  background-color: #fcf5f5;
   display: flex;
   align-items: center;
   justify-content: center;

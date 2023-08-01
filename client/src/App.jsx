@@ -23,6 +23,7 @@ function App() {
           />
           <Route exact path="/pay" element={<PayButton></PayButton>} />
           <Route
+            exact
             path="/products/:category"
             element={<ProductList></ProductList>}
           />
