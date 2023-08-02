@@ -8,6 +8,8 @@ import { Add, Remove } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 
+const KEY = process.env.REACT_APP_STRIPE;
+
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
