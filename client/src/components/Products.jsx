@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import Product from "./Product";
 import axios from "axios";
 
 const Container = styled.div`
-padding: 10px;
-display: flex;
+  padding: 10px;
+  display: flex;
   flex-wrap: wrap;
-
 `;
 
-const Products = ({ cati, filters, sort }) => {
+const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -19,18 +17,18 @@ const Products = ({ cati, filters, sort }) => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          cati
-            ? `http://localhost:5000/api/products?category=${cati}`
+          cat
+            ? `http://localhost:5000/api/products?category=${cat}`
             : "http://localhost:5000/api/products"
         );
         setProducts(res.data);
       } catch (err) {}
     };
     getProducts();
-  }, [cati]);
+  }, [cat]);
 
   useEffect(() => {
-    cati &&
+    cat &&
       setFilteredProducts(
         products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
@@ -38,7 +36,7 @@ const Products = ({ cati, filters, sort }) => {
           )
         )
       );
-  }, [products, cati, filters]);
+  }, [products, cat, filters]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -58,10 +56,10 @@ const Products = ({ cati, filters, sort }) => {
 
   return (
     <Container>
-      {cati
+      {cat
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products
-            .slice(0, 8)
+            .slice(0, 7)
             .map((item) => <Product item={item} key={item.id} />)}
     </Container>
   );

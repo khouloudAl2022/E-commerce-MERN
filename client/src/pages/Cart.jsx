@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import { mobile } from "responsive";
 import { Add, Remove } from "@mui/icons-material";
 import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
@@ -195,8 +197,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMARRY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>${cart.total}
-              </SummaryItemPrice>
+              <SummaryItemPrice>${cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Emmited Shipping</SummaryItemText>
