@@ -147,9 +147,7 @@ const Product = () => {
     }
   };
   const handleClick = () => {
-    dispatch(
-      addProduct({...product, quantity,color,size })
-    );
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
   return (
     <Container>
@@ -171,7 +169,7 @@ const Product = () => {
                 <FilterColor
                   color={c}
                   key={c}
-                  onChange={() => setColor(c)}
+                  onClick={() => setColor(c)}
                 ></FilterColor>
               ))}
             </Filter>
