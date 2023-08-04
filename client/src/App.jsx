@@ -21,7 +21,7 @@ function App() {
             path="/"
             element={<Home></Home>}
           />
-          <Route exact path="/pay" element={<PayButton></PayButton>} />
+          {/* <Route exact path="/pay" element={<PayButton></PayButton>} /> */}
           <Route
             exact
             path="/products/:category"

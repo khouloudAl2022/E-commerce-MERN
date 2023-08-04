@@ -1,6 +1,6 @@
 import Announcement from "components/Announcement";
 import Navbar from "components/Navbar";
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import Footer from "./Footer";
 import { mobile } from "responsive";
@@ -8,7 +8,8 @@ import { Add, Remove } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 
-const KEY = process.env.REACT_APP_STRIPE;
+const KEY =
+  "pk_test_51NUe30DGVlSZvv6ZwLxCG7iXkShogtjuKDlty1IKf6osiovFmZQnb7l4eLEigBA9E17c6Fxk3UV0UAXclbuuJvP600Pnk5dMFj";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -145,7 +146,12 @@ const SummaryItemPrice = styled.span``;
 const ProductSize = styled.span``;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log("cart", cart);
+  const [stripeToken, setStripeToken] = useState(null);
+
+  //console.log("cart", cart);
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
   return (
     <Container>
       <Navbar />
@@ -213,7 +219,18 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>${cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <StripeCheckout
+              name="Kiki Shop"
+              image="https://i.pinimg.com/736x/b8/b6/3d/b8b63da42a30e19926a2d3ed5951c239.jpg"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <Button>CHECKOUT NOW</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
