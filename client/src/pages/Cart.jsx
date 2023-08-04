@@ -1,12 +1,16 @@
+//TODO: correct the currency DT not usd
 import Announcement from "components/Announcement";
 import Navbar from "components/Navbar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Footer from "./Footer";
 import { mobile } from "responsive";
 import { Add, Remove } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 const KEY =
   "pk_test_51NUe30DGVlSZvv6ZwLxCG7iXkShogtjuKDlty1IKf6osiovFmZQnb7l4eLEigBA9E17c6Fxk3UV0UAXclbuuJvP600Pnk5dMFj";
@@ -147,11 +151,31 @@ const ProductSize = styled.span``;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
 
   //console.log("cart", cart);
+
   const onToken = (token) => {
     setStripeToken(token);
   };
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/checkout/payment",
+          {
+            tokenId: stripeToken.id,
+            amount: cart.total * 1000,
+          }
+        );
+        console.log(res.data);
+        navigate("/success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
   return (
     <Container>
       <Navbar />
@@ -219,18 +243,28 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>${cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <StripeCheckout
-              name="Kiki Shop"
-              image="https://i.pinimg.com/736x/b8/b6/3d/b8b63da42a30e19926a2d3ed5951c239.jpg"
-              billingAddress
-              shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            >
-              <Button>CHECKOUT NOW</Button>
-            </StripeCheckout>
+            {stripeToken ? (
+              <center>
+                <span style={{ textAlign: "center" }}>
+                  <Spinner animation="grow" size="sm" />
+                  <Spinner animation="grow" size="sm" />
+                  <Spinner animation="grow" size="sm" />
+                </span>
+              </center>
+            ) : (
+              <StripeCheckout
+                name="Kiki Shop"
+                image="https://i.pinimg.com/736x/b8/b6/3d/b8b63da42a30e19926a2d3ed5951c239.jpg"
+                billingAddress
+                shippingAddress
+                description={`Your total is $${cart.total}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey={KEY}
+              >
+                <Button>CHECKOUT NOW</Button>
+              </StripeCheckout>
+            )}
           </Summary>
         </Bottom>
       </Wrapper>
