@@ -1,6 +1,5 @@
 import Success from "./pages/Success";
 import Cart from "./pages/Cart";
-import PayButton from "./pages/PayButton";
 import React from "react";
 
 import ProductList from "./pages/ProductList";
@@ -9,7 +8,7 @@ import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 function App() {
   return (
     <div className="App">
@@ -21,7 +20,6 @@ function App() {
             path="/"
             element={<Home></Home>}
           />
-          {/* <Route exact path="/pay" element={<PayButton></PayButton>} /> */}
           <Route
             exact
             path="/products/:category"
