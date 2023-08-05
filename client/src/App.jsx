@@ -9,8 +9,8 @@ import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useSelector } from "react-redux";
 function App() {
-  // const user = true;
   return (
     <div className="App">
       <BrowserRouter>
