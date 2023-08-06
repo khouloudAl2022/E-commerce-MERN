@@ -14,7 +14,7 @@ const {
 const router = require("express").Router();
 
 router.post("/", verifyToken, CreateCart);
-router.put("/:id", EditCart);
+router.put("/:id", EditCart); //FIXME: middlewares 
 router.delete("/:id", DeleteCart);
 router.get("/find/:userId", GetUserCart);
 router.get("/", GetAllCart);

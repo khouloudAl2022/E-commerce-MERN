@@ -46,7 +46,7 @@ exports.Login = async (req, res) => {
     //hide password
     const { password, ...others } = user._doc;
 
-    res.status(200).send({ msg: "success login", ...others, acessToken });
+    res.status(200).send({ ...others, acessToken });
   } catch (error) {
     res.status(500).send(error);
   }

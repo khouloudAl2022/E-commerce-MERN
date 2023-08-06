@@ -9,7 +9,7 @@ const { verifyTokenAndAdmin } = require("../middlewars/verifyToken");
 
 const router = require("express").Router();
 
-router.post("/", verifyTokenAndAdmin, CreateProduct);
+router.post("/", CreateProduct);
 router.put("/:id", verifyTokenAndAdmin, EditProduct);
 router.delete("/:id", verifyTokenAndAdmin, DeleteProduct);
 router.get("/find/:id", GetProduct);

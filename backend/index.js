@@ -7,10 +7,11 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
-
+const cors = require("cors");
 require("dotenv").config();
 
 connectDb();
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
