@@ -13,7 +13,6 @@ import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-  margin-top: 1.5%;
 
   height: 60px;
   ${mobile({ height: "50px" })}

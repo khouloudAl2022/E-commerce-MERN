@@ -70,10 +70,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login(dispatch, { username, password }, navigate);
   };
   return (
     <Container>

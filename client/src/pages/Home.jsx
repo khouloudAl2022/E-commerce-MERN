@@ -12,9 +12,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <Announcement />
 
       <CarouselShop />
+      <Announcement />
+
       <Categories />
 
       <Products />
