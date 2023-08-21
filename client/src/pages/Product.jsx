@@ -8,9 +8,9 @@ import Announcement from "../components/Announcement";
 import Newsletter from "components/Newsletter";
 import Footer from "./Footer";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/cartRedux";
+import { publicRequest } from "requestMethods";
 
 const Container = styled.div``;
 
@@ -132,7 +132,7 @@ const Product = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await axios.get(`/api/products/find/${id}`);
+        const res = await publicRequest.get(`/products/find/${id}`);
         console.log("getoneprod", res.data);
         setProduct(res.data);
       } catch (error) {}
@@ -195,7 +195,6 @@ const Product = () => {
 
       <Footer />
       <Announcement />
-
     </Container>
   );
 };

@@ -1,114 +1,119 @@
-//FIXME:  sliders are abouve the navbar
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useState } from "react";
+import styled from "styled-components";
+import { sliderItems } from "../data";
+import { mobile } from "../responsive";
 
-import React from "react";
-import { Carousel } from "react-bootstrap";
-import { keyframes, styled } from "styled-components";
 const Container = styled.div`
   width: 100%;
-  height: 70%;
+  height: 100vh;
+  display: flex;
   position: relative;
+  overflow: hidden;
+  ${mobile({ display: "none" })}
 `;
-const WaveText = styled.div`
+
+const Arrow = styled.div`
+  width: 50px;
+  height: 50px;
+  background-color: #fff7f7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 20%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: ${(props) => props.direction === "left" && "10px"};
+  right: ${(props) => props.direction === "right" && "10px"};
+  margin: auto;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 2;
 `;
 
-const flip = keyframes`
-  0%, 80% {
-    transform: rotateY(360deg);
-  }
+const Wrapper = styled.div`
+  height: 100%;
+  display: flex;
+  transition: all 1.5s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
-const WaveSpan = styled.span`
+const Slide = styled.div`
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  display: inline-block;
-  margin-top: 50px;
-  font-size: 80px;
-  font-weight: bolder;
-  color: #414141;
-  -webkit-background-clip: text;
-  text-transform: uppercase;
-  animation: ${flip} 2s infinite;
-  animation-delay: ${(props) =>
-    `calc(0.2s * ${
-      // @ts-ignore
-      props.index
-    })`};
+  align-items: center;
+  background-color: #${(props) => props.bg};
 `;
-const H3 = styled.h3`
-  display: flex;
-  color: #414141;
-  margin-left: 10%;
-  width: 100%;
+
+const ImgContainer = styled.div`
+  height: 100%;
+  flex: 1;
 `;
-const CarouselShop = () => {
-  const waveText = "Vogue "; //FIXME: change style
+
+const Image = styled.img`
+  height: 80%;
+`;
+
+const InfoContainer = styled.div`
+  flex: 1;
+  padding: 50px;
+`;
+
+const Title = styled.h1`
+  font-size: 70px;
+`;
+
+const Desc = styled.p`
+  margin: 50px 0px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction) => {
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
 
   return (
     <Container>
-      <Carousel>
-        <Carousel.Item >
-          <img
-            className="d-block w-100"
-            src="https://usabilitygeek.com/wp-content/uploads/2020/06/color.jpg"
-            alt="First slide"
-          />
-          <WaveText className="waviy">
-            {waveText.split("").map((char, index) => (
-              <WaveSpan
-                key={index}
-                // @ts-ignore
-                index={index + 1}
-              >
-                {char}
-              </WaveSpan>
-            ))}
-            <H3>
-              DON'T COMPOMISE ON STYLE! GET FLAT 30% <br />
-              OFF FOR NEW ARRIVALS
-            </H3>
-          </WaveText>
-          <Carousel.Caption>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item style={{ height: "50rem" }}>
-          <img
-            className="d-block w-100"
-            src="https://www.refinery29.com/images/10378044.jpg?crop=40%3A21"
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item style={{ height: "50rem" }}>
-          <img
-            className="d-block w-100"
-            src="https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/eadc/635b/9738/faba/92f1/4dcf/dfc6/1a4b/420e/51c3/51c3.jpg"
-            alt="Third slide"
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+      <Arrow direction="left" onClick={() => handleClick("left")}>
+        <KeyboardArrowLeftIcon />
+      </Arrow>
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((item) => (
+          <Slide bg={item.bg} key={item.id}>
+            <ImgContainer>
+              <Image src={item.img} />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Desc>{item.desc}</Desc>
+              <Button>SHOW NOW</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
+      </Wrapper>
+      <Arrow direction="right" onClick={() => handleClick("right")}>
+        <KeyboardArrowRightIcon />{" "}
+      </Arrow>
     </Container>
-    //FIXME:caption items on carousel changing style and text
   );
 };
 
-export default CarouselShop;
+export default Slider;

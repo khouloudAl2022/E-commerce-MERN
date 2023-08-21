@@ -143,7 +143,7 @@ const Navbar = () => {
           </Left>
           <Center>
             <StyledLink to="/">
-              <Logo>aziziShop.</Logo>
+              <Logo>kikiShop.</Logo>
             </StyledLink>
           </Center>
           <Right>
