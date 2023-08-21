@@ -14,6 +14,10 @@ const Container = styled.div`
   &:hover {
     filter: brightness(50%);
   }
+  ${mobile({
+    width: "100%",
+    height: "100% !impo",
+  })}
 `;
 /*   transition: transform 0.3s ease;
   &:hover {

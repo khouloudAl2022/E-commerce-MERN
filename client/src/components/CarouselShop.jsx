@@ -50,7 +50,7 @@ const CarouselShop = () => {
   return (
     <Container>
       <Carousel>
-        <Carousel.Item style={{ height: "50rem", position: "relative" }}>
+        <Carousel.Item >
           <img
             className="d-block w-100"
             src="https://usabilitygeek.com/wp-content/uploads/2020/06/color.jpg"

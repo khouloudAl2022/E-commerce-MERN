@@ -6,10 +6,15 @@ import CategoryItem from "./CategoryItem";
 
 const Container = styled.div`
   display: flex;
-  margin-top:0.5%;
+  margin-top: 0.5%;
   padding: 20px;
   justify-content: space-between;
-  ${mobile({ padding: "0px", flexDirection: "column" })}
+  ${mobile({
+    padding: "0px",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
 `;
 const Categories = () => {
   return (

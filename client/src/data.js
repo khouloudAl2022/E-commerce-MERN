@@ -1,19 +1,19 @@
 export const categories = [
   {
     id: 1,
-    img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: "https://static.massimodutti.net/3/photos//2023/V/0/1/p/5697/540/430/5697540430_2_8_16.jpg?t=1674662869630&impolicy=massimodutti-itxmediumhigh&imwidth=500&imformat=chrome",
     title: "SHIRT STYLE!",
     cat: "women",
   },
   {
     id: 2,
-    img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: "https://static.zara.net/photos///2023/I/0/2/p/0362/301/406/2/w/744/0362301406_1_1_1.jpg?ts=1690532447807",
     title: "LOUNGEWEAR LOVE",
     cat: "man",
   },
   {
     id: 3,
-    img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    img: "https://assets.teenvogue.com/photos/6240df8e58c7eea0c5179cba/1:1/w_800,h_800,c_limit/hmset.jpg",
     title: "LIGHT JACKETS",
     cat: "formal",
   },

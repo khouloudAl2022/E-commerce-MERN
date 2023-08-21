@@ -66,3 +66,44 @@ exports.GetAllProduct = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+// const getAll = async (req, res) => {
+//   try {
+//     const fetch = await Product.find();
+//     res.send(fetch);
+//   } catch (error) {
+//     res.status(500).send({ message: error.message || "Server error" });
+//   }
+// };
+// const getById = async (req, res) => {
+//   try {
+//     const fetch = await Product.findByID(req.params.id);
+//     res.send(fetch);
+//   } catch (error) {
+//     res.status(500).send({ message: error.message || "Server error" });
+//   }
+// };
+// const createOne = async (req, res) => {
+//   try {
+//     await Product.create(req.body);
+//     res.send({ message: "Created successfully" });
+//   } catch (error) {
+//     res.status(500).send({ message: error.message || "Server error" });
+//   }
+// };
+// const updateOne = async (req, res) => {
+//   try {
+//     await Product.findByIdAndUpdate(req.params.id, req.body);
+//     res.send(fetch);
+//   } catch (error) {
+//     res.status(500).send({ message: error.message || "Server error" });
+//   }
+// };
+// const deleteOne = async (req, res) => {
+//   try {
+//     await Product.findByIdAndDelete(req.params.id);
+//     res.send({ message: "deleted successfuly!" });
+//   } catch (error) {
+//     res.status(500).send({ message: error.message || "Server error" });
+//   }
+// };

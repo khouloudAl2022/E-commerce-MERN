@@ -13,7 +13,6 @@ import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-
   height: 60px;
   ${mobile({ height: "50px" })}
 `;
@@ -144,7 +143,7 @@ const Navbar = () => {
           </Left>
           <Center>
             <StyledLink to="/">
-              <Logo>KikiShop.</Logo>
+              <Logo>aziziShop.</Logo>
             </StyledLink>
           </Center>
           <Right>
