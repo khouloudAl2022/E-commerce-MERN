@@ -1,3 +1,5 @@
+import React from 'react';
+
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useState } from "react";
@@ -11,7 +13,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none" })}
+  ${mobile({ display: "flex",justifyContent:"center" })}
 `;
 
 const Arrow = styled.div`
@@ -45,7 +47,7 @@ const Slide = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #${(props) => props.bg};
+  background-color: #${(props) => props.bg};  
 `;
 
 const ImgContainer = styled.div`
@@ -54,12 +56,15 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 100%;
+  width:100%;
+  object-fit:cover;
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  
+  // padding: 50px;
 `;
 
 const Title = styled.h1`
@@ -102,9 +107,10 @@ const Slider = () => {
               <Image src={item.img} />
             </ImgContainer>
             <InfoContainer>
+              <div style={{padding:"3%"}}>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
+              <Button>SHOW NOW</Button></div>
             </InfoContainer>
           </Slide>
         ))}
@@ -117,3 +123,4 @@ const Slider = () => {
 };
 
 export default Slider;
+

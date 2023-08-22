@@ -4,9 +4,11 @@ import Product from "./Product";
 import axios from "axios";
 
 const Container = styled.div`
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content:center;
+  padding-top:0px;
+  margin:0px;
 `;
 
 const Products = ({ cat, filters, sort }) => {
@@ -55,7 +57,7 @@ const Products = ({ cat, filters, sort }) => {
   }, [sort]);
 
   return (
-    <Container>
+    <Container className="">
       {cat
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products

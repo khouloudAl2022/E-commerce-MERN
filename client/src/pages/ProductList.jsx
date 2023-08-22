@@ -2,7 +2,7 @@ import Announcement from "components/Announcement";
 import Navbar from "components/Navbar";
 import Newsletter from "components/Newsletter";
 import Products from "components/Products";
-import React, { useState } from "react";
+import { useState } from "react";
 import { styled } from "styled-components";
 import Footer from "./Footer";
 import { mobile } from "responsive";

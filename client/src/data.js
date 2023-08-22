@@ -1,21 +1,21 @@
 export const sliderItems = [
   {
     id: 1,
-    img: "https://i.ibb.co/XsdmR2c/1.png",
+    img: "https://static.zara.net/photos///2023/I/0/1/p/2225/483/631/2/w/560/2225483631_2_1_1.jpg?ts=1687522076338",
     title: "SUMMER SALE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "f5fafd",
   },
   {
     id: 2,
-    img: "https://i.ibb.co/DG69bQ4/2.png",
+    img: "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/eadc/635b/9738/faba/92f1/4dcf/dfc6/1a4b/420e/51c3/51c3.jpg",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
   },
   {
     id: 3,
-    img: "https://i.ibb.co/cXFnLLV/3.png",
+    img: "https://fashionunited.com/cdn-cgi/image/fit=cover,format=auto,gravity=center,height=926,quality=70,width=1388/https://static.fashionunited.com/201708/Zara-facebook1.jpg",
     title: "LOUNGEWEAR LOVE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fbf0f4",
@@ -36,7 +36,7 @@ export const categories = [
   },
   {
     id: 3,
-    img: "https://assets.teenvogue.com/photos/6240df8e58c7eea0c5179cba/1:1/w_800,h_800,c_limit/hmset.jpg",
+    img: "https://static.zara.net/photos///2023/V/0/1/p/2249/457/622/2/w/824/2249457622_2_1_1.jpg?ts=1676304244022",
     title: "LIGHT JACKETS",
     cat: "formal",
   },
@@ -66,13 +66,5 @@ export const popularProducts = [
   {
     id: 6,
     img: "https://img-3.journaldesfemmes.fr/T54yyhXCFHEcx1_kdgHYjWFS7qk=/600x/smart/e1fd9fd5042e4039b87c560e162bc4e3/ccmcms-jdf/17977312.jpg",
-  },
-  {
-    id: 7,
-    img: "https://static.zara.net/photos///2023/V/0/3/p/6201/650/500/2/w/824/6201650500_6_2_1.jpg?ts=1681210615586",
-  },
-  {
-    id: 8,
-    img: "https://static.zara.net/photos///2023/V/0/1/p/2487/707/942/2/w/824/2487707942_2_1_1.jpg?ts=1676371088334",
   },
 ];

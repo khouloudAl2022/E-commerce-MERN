@@ -1,6 +1,6 @@
 //TODO: Login with passport.js
 //FIXME:error handling ,and fix appearance of red message even request success
-import React, { useState } from "react";
+import { useState } from "react";
 import { mobile } from "../responsive";
 import { styled } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";

@@ -9,7 +9,7 @@ import { Add, Remove } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
 const KEY =
@@ -184,7 +184,10 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <Link to="/">
+            {" "}
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
