@@ -109,7 +109,6 @@ const Navbar = () => {
       // Get the current scroll position
       const scrollY = window.scrollY;
 
-      // Determine when to add the transparent background
       if (scrollY > 100) {
         setIsTransparent(false);
       } else {

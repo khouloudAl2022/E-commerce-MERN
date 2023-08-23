@@ -11,6 +11,7 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import CloseIcon from '@mui/icons-material/Close';
 
 const KEY =
   "pk_test_51NUe30DGVlSZvv6ZwLxCG7iXkShogtjuKDlty1IKf6osiovFmZQnb7l4eLEigBA9E17c6Fxk3UV0UAXclbuuJvP600Pnk5dMFj";
@@ -144,6 +145,19 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
+
+const CloseButton = styled(CloseIcon)`
+  cursor: pointer;
+  display: flex;
+  margin-left: 90%;
+  color: #f0f0f0;
+  transition: color 0.3s; 
+
+  &:hover {
+    color: gray;
+  }`;
+
+
 const SummaryItemText = styled.span``;
 
 const SummaryItemPrice = styled.span``;
@@ -184,8 +198,8 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
+          
           <Link to="/">
-            {" "}
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
@@ -198,7 +212,7 @@ const Cart = () => {
           <Info>
             {cart.products.map((product) => (
               <>
-                {" "}
+                < CloseButton />
                 <Product>
                   <ProductDetail>
                     <Image src={product.img} />
@@ -228,6 +242,7 @@ const Cart = () => {
                     </ProductPrice>
                   </PriceDetail>
                 </Product>
+
                 <Hr />
               </>
             ))}

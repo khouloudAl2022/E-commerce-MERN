@@ -1,4 +1,3 @@
-import React from "react";
 import Marquee from "react-fast-marquee";
 import { styled } from "styled-components";
 const Container = styled.div`
