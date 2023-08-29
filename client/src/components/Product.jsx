@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { Card } from "react-bootstrap";
-import { ShoppingCartOutlined, SearchOutlined, FavoriteBorderOutlined } from "@mui/icons-material";
+import {
+  ShoppingCartOutlined,
+  SearchOutlined,
+  FavoriteBorderOutlined,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { addProduct } from "redux/cartRedux";
+import { useDispatch } from "react-redux";
+import { publicRequest } from "requestMethods";
+import { useLocation } from "react-router-dom";
+
 
 const Info = styled.div`
   opacity: 0;
@@ -42,20 +51,49 @@ const ProductCard = styled(Card)`
 `;
 
 const Product = ({ item }) => {
+  const location = useLocation();
+
+  const dispatch=useDispatch()
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const id = location.pathname.split("/")[2];
+
+
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get(`/products/find/${id}`);
+        console.log("getoneprod", res.data);
+        setProduct(res.data);
+      } catch (error) {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, quantity, color, size }));
+  };
   return (
     <ProductCard>
       <Card.Img variant="top" src={item.img} style={{ borderRadius: "0" }} />
       <Info>
         <IconContainer>
-          <ShoppingCartOutlined />
+          <ShoppingCartOutlined onClick={handleClick} />
           <Link to={`/product/${item._id}`}>
-            <SearchOutlined style={{color:"black"}}/>
+            <SearchOutlined style={{ color: "black" }} />
           </Link>
           <FavoriteBorderOutlined />
         </IconContainer>
       </Info>
       <Card.Body>
-        <Card.Title style={{fontSize: "12px" ,fontFamily: "Urbanist, sans-serif"}}>{item.title}</Card.Title>
+        <Card.Title
+          style={{ fontSize: "12px", fontFamily: "Urbanist, sans-serif" }}
+        >
+          {item.title}
+        </Card.Title>
         {/* Add other card body content if needed */}
       </Card.Body>
     </ProductCard>

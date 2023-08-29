@@ -9,9 +9,14 @@ const cartSlice = createSlice({
       state.total += action.payload.price * action.payload.quantity;
     },
     deleteCart: (state, action) => {
-      state.products.filter((el) => el.id !== action.payload);
-    },
-  },
+      const productId = action.payload;
+      // find product to delete
+      const productToDelete = state.products.find(product=>product.id === productId) // return boolean
+      if(productToDelete){ // if true
+          state.quantity -= productToDelete.quantity; // increment -1
+          state.total -= productToDelete.price * productToDelete.quantity; // price * quantite
+          state.products = state.products.filter(product=>product.id !== productId);  
+  }}}
 });
 export const { addProduct, deleteCart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -11,9 +11,11 @@ import { Link } from "react-router-dom";
 import { mobile } from "../responsive";
 import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
+import SidebarAuth from "./SideBarAuth";
 
 const Container = styled.div`
   height: 60px;
+
   ${mobile({ height: "50px" })}
 `;
 
@@ -23,6 +25,7 @@ const FixedNavbar = styled.div`
   right: 0;
   background-color: ${({ isTransparent }) =>
     isTransparent ? "transparent" : "#ffffff"};
+
   z-index: 4;
   transition: background-color 0.3s ease;
 `;
@@ -74,11 +77,8 @@ const Center = styled.div`
 `;
 
 const Logo = styled.h1`
-  text-align: center;
-  font-weight: bold;
-  color: #515151;
-
-  ${mobile({ fontSize: "24px" })}
+  color: #2b2e32;
+  ${mobile({ fontSize: "24px" })};
 `;
 
 const Right = styled.div`
@@ -93,6 +93,8 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  color: #606565;
+
   ${mobile({ fontSize: "12px", marginLeft: "10px", flexWrap: "wrap" })}
 `;
 const StyledLink = styled(Link)`
@@ -100,6 +102,10 @@ const StyledLink = styled(Link)`
 `;
 
 const Navbar = () => {
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
+  const closeSidebar = () => setSidebar(false);
+
   const quantity = useSelector((state) => state.cart.quantity);
   console.log(quantity);
   const [isTransparent, setIsTransparent] = useState(false);
@@ -146,8 +152,12 @@ const Navbar = () => {
             </StyledLink>
           </Center>
           <Right>
-            <MenuItem>REGISTER</MenuItem>
-            <MenuItem>SIGN IN</MenuItem>
+            <StyledLink to="#" className="menu-bars">
+              <MenuItem onClick={showSidebar}>REGISTER</MenuItem>
+            </StyledLink>
+            <StyledLink to="/login">
+              <MenuItem>SIGN IN</MenuItem>
+            </StyledLink>
             <Link to="/cart" style={{ textDecoration: "none" }}>
               <MenuItem>
                 <Badge badgeContent={quantity} color="primary">
@@ -160,6 +170,7 @@ const Navbar = () => {
           </Right>
         </Wrapper>
       </Container>
+      <SidebarAuth sidebar={sidebar} closeSidebar={closeSidebar} />
     </FixedNavbar>
   );
 };
