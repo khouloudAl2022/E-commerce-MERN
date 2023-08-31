@@ -8,15 +8,14 @@ const cartSlice = createSlice({
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.quantity;
     },
-    deleteCart: (state, action) => {
-      const productId = action.payload;
-      // find product to delete
-      const productToDelete = state.products.find(product=>product.id === productId) // return boolean
-      if(productToDelete){ // if true
-          state.quantity -= productToDelete.quantity; // increment -1
-          state.total -= productToDelete.price * productToDelete.quantity; // price * quantite
-          state.products = state.products.filter(product=>product.id !== productId);  
-  }}}
+    removeFromCart: (state, action) => {
+      state.products = state.products.filter(
+        (product) => product._id !== action.payload
+      );
+      state.quantity -= 1;
+      state.total += action.payload.price * action.payload.quantity;
+    },
+  },
 });
-export const { addProduct, deleteCart } = cartSlice.actions;
+export const { addProduct, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

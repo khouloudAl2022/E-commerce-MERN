@@ -13,7 +13,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "flex", justifyContent: "center" })}
+  ${mobile({ display: "flex", justifyContent: "center", width: "100%" })}
 `;
 
 const Arrow = styled.div`
@@ -53,6 +53,9 @@ const Slide = styled.div`
 const ImgContainer = styled.div`
   height: 100%;
   flex: 1;
+  ${mobile({
+    display: "none",
+  })}
 `;
 
 const Image = styled.img`
@@ -68,7 +71,10 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 45px;
+  ${mobile({
+    fontSize: "50px",
+  })}
 `;
 
 const Desc = styled.p`
@@ -111,7 +117,8 @@ const Slider = () => {
                 <Title>{item.title}</Title>
                 <Desc>{item.desc}</Desc>
                 <a href="#products">
-                <Button>SHOW NOW</Button></a>
+                  <Button>SHOW NOW</Button>
+                </a>
               </div>
             </InfoContainer>
           </Slide>

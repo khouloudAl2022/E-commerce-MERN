@@ -66,7 +66,6 @@ const ProductList = () => {
   return (
     <Container>
       <Navbar />
-      <Announcement />
       <Wrapper>
         <Title>{cat}</Title>
         <FilterContainer>
@@ -108,6 +107,7 @@ const ProductList = () => {
         </FilterContainer>
       </Wrapper>
       <Products cat={cat} filters={filters} sort={sort} />
+      <Announcement />
 
       <Newsletter />
       <Footer />

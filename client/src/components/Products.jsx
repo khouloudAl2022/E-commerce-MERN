@@ -1,14 +1,15 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Product from "./Product";
 import axios from "axios";
+import { mobile } from "responsive";
 
 const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  padding-top:0px;
-  margin:0px;
+  flex-wrap:wrap;
+  justify-content: start;
+  margin-left:0.7%;
+ 
 `;
 
 const Products = ({ cat, filters, sort }) => {
@@ -57,7 +58,6 @@ const Products = ({ cat, filters, sort }) => {
   }, [sort]);
 
   return (
-  
     <Container id="products">
       {cat
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)

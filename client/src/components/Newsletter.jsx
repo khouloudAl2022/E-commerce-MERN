@@ -10,8 +10,8 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-const Title = styled.h1`
-  font-size: 70px;
+const Title = styled.h3`
+  font-size: 50px;
   margin-bottom: 20px;
 `;
 
@@ -41,7 +41,7 @@ const Input = styled.input`
 const Button = styled.button`
   flex: 1;
   border: none;
-  background-color: teal;
+  background-color: black;
   color: white;
 `;
 

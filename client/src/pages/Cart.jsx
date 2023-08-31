@@ -12,7 +12,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import CloseIcon from "@mui/icons-material/Close";
-import { deleteCart } from "redux/cartRedux";
+import { removeFromCart } from "redux/cartRedux";
 
 const KEY =
   "pk_test_51NUe30DGVlSZvv6ZwLxCG7iXkShogtjuKDlty1IKf6osiovFmZQnb7l4eLEigBA9E17c6Fxk3UV0UAXclbuuJvP600Pnk5dMFj";
@@ -157,6 +157,10 @@ const CloseButton = styled(CloseIcon)`
     color: gray;
   }
 `;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
 
 const SummaryItemText = styled.span``;
 
@@ -164,13 +168,31 @@ const SummaryItemPrice = styled.span``;
 const ProductSize = styled.span``;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const [stripeToken, setStripeToken] = useState(null);
+  console.log(cart);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //console.log("cart", cart);
 
+  const [stripeToken, setStripeToken] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+
+  //handle cart
+  const handleFromCart = (prodID) => {
+    dispatch(removeFromCart(prodID));
+  };
+
+  // Stripe
   const onToken = (token) => {
     setStripeToken(token);
+  };
+
+  //quantities
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
   };
 
   useEffect(() => {
@@ -193,6 +215,7 @@ const Cart = () => {
     };
     stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, cart.total, navigate]);
+
   return (
     <Container>
       <Navbar />
@@ -204,16 +227,18 @@ const Cart = () => {
           </Link>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
+            <StyledLink to="/wishlist">
+              <TopText>Your Wishlist (0)</TopText>
+            </StyledLink>
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
           <Info>
             {cart.products.map((product, index) => (
-              <>
+              <div key={product._id}>
                 <CloseButton
-                  onClick={() => dispatch(deleteCart({productId:product._id}))}
+                  onClick={() => dispatch(removeFromCart(product._id))}
                 />
                 <Product>
                   <ProductDetail>
@@ -235,18 +260,16 @@ const Cart = () => {
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Add />
-                      <ProductAmount>{product.quantity}</ProductAmount>
-                      <Remove />
+                      <Add onClick={() => handleQuantity("inc")} />
+                      <ProductAmount>{quantity}</ProductAmount>
+                      <Remove onClick={() => handleQuantity("dec")} />
                     </ProductAmountContainer>
-                    <ProductPrice>
-                      ${product.price * product.quantity}
-                    </ProductPrice>
+                    <ProductPrice>${product.price * quantity}</ProductPrice>
                   </PriceDetail>
                 </Product>
 
                 <Hr />
-              </>
+              </div>
             ))}
           </Info>
           <Summary>

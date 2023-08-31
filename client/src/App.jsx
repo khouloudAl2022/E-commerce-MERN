@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import WishList from "pages/WhichList";
 // import { useSelector } from "react-redux";
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/product/:id" element={<Product></Product>} />
           <Route exact path="/success" element={<Success></Success>} />
           <Route exact path="/cart" element={<Cart></Cart>} />
+          <Route exact path="/wishlist" element={<WishList></WishList>} />
         </Routes>
       </BrowserRouter>
     </div>

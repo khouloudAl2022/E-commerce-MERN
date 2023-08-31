@@ -1,21 +1,15 @@
-// @ts-nocheck
-//TODO: Add responsive and mobile
-//FIXME: fix the searchbar make the icon inside the input and make more soft
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-
 import { Link } from "react-router-dom";
-import { mobile } from "../responsive";
 import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
-import SidebarAuth from "./SideBarAuth";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   height: 60px;
-
   ${mobile({ height: "50px" })}
 `;
 
@@ -25,8 +19,7 @@ const FixedNavbar = styled.div`
   right: 0;
   background-color: ${({ isTransparent }) =>
     isTransparent ? "transparent" : "#ffffff"};
-
-  z-index: 4;
+  z-index: 11;
   transition: background-color 0.3s ease;
 `;
 
@@ -41,13 +34,13 @@ const Wrapper = styled.div`
 const Left = styled.div`
   flex: 1;
   display: flex;
-  align-item: center;
+  align-items: center;
 `;
 
 const Language = styled.div`
   font-size: 14px;
   cursor: pointer;
-  margin-top: 1vh;
+  margin-top: -9px;
   ${mobile({ display: "none" })}
 `;
 
@@ -58,16 +51,15 @@ const SearchContainer = styled.div`
   margin-left: 25px;
   margin-bottom: 2%;
   padding: 5px;
+  ${mobile({ margin: "12", justifyContent: "center" })}
 `;
 
 const Input = styled.input`
   border: none;
-
   &:focus {
     outline: none;
   }
   background: transparent;
-
   ${mobile({ width: "50px" })}
 `;
 
@@ -86,7 +78,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  // ${mobile({ justifyContent: "center", marginRight: "17px" })}
 `;
 
 const MenuItem = styled.div`
@@ -94,7 +86,6 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 25px;
   color: #606565;
-
   ${mobile({ fontSize: "12px", marginLeft: "10px", flexWrap: "wrap" })}
 `;
 const StyledLink = styled(Link)`
@@ -102,17 +93,11 @@ const StyledLink = styled(Link)`
 `;
 
 const Navbar = () => {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
-  const closeSidebar = () => setSidebar(false);
-
   const quantity = useSelector((state) => state.cart.quantity);
-  console.log(quantity);
   const [isTransparent, setIsTransparent] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the current scroll position
       const scrollY = window.scrollY;
 
       if (scrollY > 100) {
@@ -122,10 +107,8 @@ const Navbar = () => {
       }
     };
 
-    // Add the scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -139,7 +122,6 @@ const Navbar = () => {
             <Language>EN</Language>
             <SearchContainer>
               <Input placeholder="Search" />
-
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 style={{ color: "#bdbdbd" }}
@@ -152,25 +134,25 @@ const Navbar = () => {
             </StyledLink>
           </Center>
           <Right>
-            <StyledLink to="#" className="menu-bars">
-              <MenuItem onClick={showSidebar}>REGISTER</MenuItem>
+            <StyledLink to="register">
+              <MenuItem>REGISTER</MenuItem>
             </StyledLink>
             <StyledLink to="/login">
               <MenuItem>SIGN IN</MenuItem>
             </StyledLink>
-            <Link to="/cart" style={{ textDecoration: "none" }}>
+            <StyledLink to="/cart">
               <MenuItem>
-                <Badge badgeContent={quantity} color="primary">
+                <Badge badgeContent={quantity} color="secondary">
                   <ShoppingCartOutlinedIcon
-                    style={{ color: "#292f30", fontSize: "30px" }}
+                    style={{ color: "#292f30", fontSize: "26px" }}
                   />
                 </Badge>
               </MenuItem>
-            </Link>
+            </StyledLink>
           </Right>
         </Wrapper>
       </Container>
-      <SidebarAuth sidebar={sidebar} closeSidebar={closeSidebar} />
+      {/* <SidebarAuth sidebar={sidebar} closeSidebar={closeSidebar} /> */}
     </FixedNavbar>
   );
 };

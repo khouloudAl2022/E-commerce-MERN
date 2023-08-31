@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
+  
 `;
 
 const Image = styled.img`
@@ -39,7 +40,7 @@ const InfoContainer = styled.div`
   ${mobile({ padding: "10px" })}
 `;
 
-const Title = styled.h1`
+const Title = styled.h3`
   font-weight: 200;
 `;
 
@@ -147,7 +148,7 @@ const Product = () => {
     }
   };
   const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity, color, size }));
+    dispatch(addProduct({ ...product, quantity, color, size}));
   };
   return (
     <Container>
@@ -160,7 +161,7 @@ const Product = () => {
         <InfoContainer>
           <Title>{product.title}</Title>
           <Desc>{product.desc}</Desc>
-          <Price>{product.price}DT</Price>
+          <Price>{product.price}$</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -194,7 +195,6 @@ const Product = () => {
       <Newsletter />
 
       <Footer />
-      <Announcement />
     </Container>
   );
 };

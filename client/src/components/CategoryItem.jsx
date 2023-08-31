@@ -7,16 +7,17 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 const Container = styled.div`
   flex: 1;
-  margin: 3px;
+  margin: 1px;
   height: 80vh;
+  width: 100%;
   position: relative;
   cursor: pointer;
   &:hover {
     filter: brightness(50%);
   }
   ${mobile({
-    width: "100%",
-    height: "100% !impo",
+    display: "flex",
+    justifyContent: "center",
   })}
 `;
 /*   transition: transform 0.3s ease;
@@ -29,7 +30,7 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
 
-  ${mobile({ height: "25vh" })}
+  ${mobile({ height: "40vh",width:"95vw" })}
 `;
 
 const Info = styled.div`

@@ -13,7 +13,9 @@ const Container = styled.div`
   padding:1rem0;
   font-size: 14px;
   font-weight: 500;
-  z-index: 0;
+  z-index: 10;
+ 
+
 `;
 const AnnouncContainer = styled.div`
   display: flex;
