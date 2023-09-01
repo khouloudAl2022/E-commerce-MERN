@@ -24,7 +24,7 @@ export const sliderItems = [
 export const categories = [
   {
     id: 1,
-    img: "https://static.massimodutti.net/3/photos//2023/V/0/1/p/5697/540/430/5697540430_2_8_16.jpg?t=1674662869630&impolicy=massimodutti-itxmediumhigh&imwidth=500&imformat=chrome",
+    img: "https://sadanduseless.b-cdn.net/wp-content/uploads/2021/03/zara-models18.jpg",
     title: "SHIRT STYLE!",
     cat: "women",
   },

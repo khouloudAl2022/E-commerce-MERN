@@ -8,6 +8,6 @@ export const login = async (dispatch, user, navigate) => {
     dispatch(loginSuccess(res.data));
     navigate("/");
   } catch (error) {
-    dispatch(loginFailure());
+    dispatch( loginFailure());
   }
 };

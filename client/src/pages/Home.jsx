@@ -14,7 +14,6 @@ const Home = () => {
       <Navbar />
 
       <CarouselShop />
-      <Announcement />
 
       <Categories />
         <Products />

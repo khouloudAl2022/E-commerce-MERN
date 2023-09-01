@@ -1,76 +1,63 @@
 import Marquee from "react-fast-marquee";
 import { styled } from "styled-components";
+
 const Container = styled.div`
+  margin-top: 640px;
   position: absolute;
   width: 100%;
   height: 30px;
-  background-color:  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid black;
   color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:1rem0;
+  padding: 1rem 0;
   font-size: 14px;
   font-weight: 500;
-  z-index: 10;
- 
-
+  z-index: 12;
 `;
+
 const AnnouncContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 2rem;
 `;
+
 const Span = styled.span`
   margin: 30px;
-  color: ${(props) =>
-    // @ts-ignore
-    props.type === "title1" && "#00ca8d"};
-  margin-right:${(props) =>
-    // @ts-ignore
-    props.type === "title1" && "2rem"}
-  margin-right:${(props) =>
-    // @ts-ignore
-    props.type === "title2" && "2rem"}
+  color: ${(props) => (props.type === "title1" ? "#00ca8d" : "inherit")};
+  color: ${(props) => (props.type === "title1" ? "bolder" : "inherit")};
+
+  margin-right: ${(props) => (props.type === "title1" ? "2rem" : "inherit")};
   &:not(:last-child) {
     margin-right: 2rem;
   }
-  
-
 `;
+
+const AnnouncementItem = ({ type, children }) => (
+  <Span type={type}>{children}</Span>
+);
 
 const Announcement = () => {
   return (
     <Container>
-      <Marquee>
+      <Marquee speed={15}>
         <AnnouncContainer>
-          <Span
-            // @ts-ignore
-            type="title1"
-          >
-            Super Deal! Free Shipping on Orders Over $50 //
-          </Span>
-          <Span
-            // @ts-ignore
-            type="title2"
-          >
-            20% purchase discount. Shop Now{" "}
-          </Span>
+          <AnnouncementItem type="title1">
+            Super Deal ! Free Shipping on Orders Over $50
+          </AnnouncementItem>
+          <AnnouncementItem type="title2">
+            20% purchase discount. Shop Now //
+          </AnnouncementItem>
         </AnnouncContainer>
         <AnnouncContainer>
-          <Span
-            // @ts-ignore
-            type="title1"
-          >
-            Super Deal! Free Shipping on Orders Over $50 //{" "}
-          </Span>
-          <Span
-            // @ts-ignore
-            type="title2"
-          >
-            20% purchase discount. Shop Now{" "}
-          </Span>
+          <AnnouncementItem type="title1">
+            Super Deal! Free Shipping on Orders Over $50 //
+          </AnnouncementItem>
+          <AnnouncementItem type="title2">
+            20% purchase discount. Shop Now
+          </AnnouncementItem>
         </AnnouncContainer>
       </Marquee>
     </Container>

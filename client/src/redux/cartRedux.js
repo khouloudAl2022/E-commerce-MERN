@@ -12,8 +12,10 @@ const cartSlice = createSlice({
       state.products = state.products.filter(
         (product) => product._id !== action.payload
       );
-      state.quantity -= 1;
-      state.total += action.payload.price * action.payload.quantity;
+      if (state.quantity > 0) {
+        state.quantity -= 1;
+      }
+      state.total -= action.payload.price * action.payload.quantity;
     },
   },
 });

@@ -6,6 +6,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
 import { mobile } from "../responsive";
+import Announcement from "./Announcement";
 
 const Container = styled.div`
   width: 100%;
@@ -102,32 +103,36 @@ const Slider = () => {
   };
 
   return (
-    <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
-        <KeyboardArrowLeftIcon />
-      </Arrow>
-      <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
-            <ImgContainer>
-              <Image src={item.img} />
-            </ImgContainer>
-            <InfoContainer>
-              <div style={{ padding: "3%" }}>
-                <Title>{item.title}</Title>
-                <Desc>{item.desc}</Desc>
-                <a href="#products">
-                  <Button>SHOW NOW</Button>
-                </a>
-              </div>
-            </InfoContainer>
-          </Slide>
-        ))}
-      </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
-        <KeyboardArrowRightIcon />{" "}
-      </Arrow>
-    </Container>
+    <>
+      <Container>
+        <Arrow direction="left" onClick={() => handleClick("left")}>
+          <KeyboardArrowLeftIcon />
+        </Arrow>
+        <Wrapper slideIndex={slideIndex}>
+          {sliderItems.map((item) => (
+            <Slide bg={item.bg} key={item.id}>
+              <ImgContainer>
+                <Image src={item.img} />
+              </ImgContainer>
+              <InfoContainer>
+                <div style={{ padding: "3%" }}>
+                  <Title>{item.title}</Title>
+                  <Desc>{item.desc}</Desc>
+                  <a href="#products">
+                    <Button>SHOW NOW</Button>
+                  </a>
+                </div>
+              </InfoContainer>
+            </Slide>
+          ))}
+        </Wrapper>
+        <Arrow direction="right" onClick={() => handleClick("right")}>
+          <KeyboardArrowRightIcon />
+        </Arrow>
+        <Announcement />
+
+      </Container>
+    </>
   );
 };
 

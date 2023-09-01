@@ -168,13 +168,12 @@ const SummaryItemPrice = styled.span``;
 const ProductSize = styled.span``;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  console.log( cart);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [stripeToken, setStripeToken] = useState(null);
-  const [quantity, setQuantity] = useState(1);
 
   //handle cart
   const handleFromCart = (prodID) => {
@@ -185,15 +184,9 @@ const Cart = () => {
   const onToken = (token) => {
     setStripeToken(token);
   };
-
+  
   //quantities
-  const handleQuantity = (type) => {
-    if (type === "dec") {
-      quantity > 1 && setQuantity(quantity - 1);
-    } else {
-      setQuantity(quantity + 1);
-    }
-  };
+   
 
   useEffect(() => {
     const makeRequest = async () => {
@@ -260,11 +253,13 @@ const Cart = () => {
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Add onClick={() => handleQuantity("inc")} />
-                      <ProductAmount>{quantity}</ProductAmount>
-                      <Remove onClick={() => handleQuantity("dec")} />
+                      <Add />
+                      <ProductAmount>{product.quantity}</ProductAmount>
+                      <Remove />
                     </ProductAmountContainer>
-                    <ProductPrice>${product.price * quantity}</ProductPrice>
+                    <ProductPrice>
+                      ${product.price * product.quantity}
+                    </ProductPrice>
                   </PriceDetail>
                 </Product>
 
