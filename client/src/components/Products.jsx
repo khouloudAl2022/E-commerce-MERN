@@ -7,8 +7,7 @@ import { mobile } from "responsive";
 const Container = styled.div`
   display: flex;
   flex-wrap:wrap;
-  justify-content: start;
-  margin-left:0.7%;
+  justify-content: center;
   position:relative;
   
   ${mobile({ marginTop:"1%",display:"flex",justifyContent:"center" })}
