@@ -8,8 +8,9 @@ const Container = styled.div`
   margin-top: 0%;
   padding: 0px;
   justify-content: space-between;
+  
   ${mobile({
-    marginTop: "8%",
+    marginTop: "1%",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",

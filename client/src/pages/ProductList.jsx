@@ -13,7 +13,7 @@ const Container = styled.div`
   margin-top: 0%;
 `;
 const Title = styled.h1`
-  margin-left: 9vw;
+  margin-left: 2vw;
 `;
 const FilterContainer = styled.div`
   display: flex;
@@ -21,14 +21,14 @@ const FilterContainer = styled.div`
 `;
 
 const Filter1 = styled.div`
-  margin-left: 9vw;
+  margin-left: 2vw;
   margin-top: 2vw;
   margin-bottom: 2vw;
 
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
+  ${mobile({ width: "0px 12px", display: "flex", flexDirection: "column" })}
 `;
 const Filter2 = styled.div`
-  margin-right: 8vw;
+  margin-right: 2vw;
   margin-top: 2vw;
   margin-bottom: 2vw;
 
@@ -36,7 +36,7 @@ const Filter2 = styled.div`
 `;
 
 const FilterText = styled.span`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   margin-right: 20px;
   ${mobile({ marginRight: "0px" })}
@@ -48,7 +48,13 @@ const Wrapper = styled.div`
 const Select = styled.select`
   margin-left: 10px;
   padding: 5px;
+  ${mobile({ margin: "10px" })}
 `;
+const contProd = styled.div`
+ 
+  ${mobile({ display: "flex" })}
+`;
+
 
 const Option = styled.option``;
 
@@ -106,7 +112,9 @@ const ProductList = () => {
           </Filter2>
         </FilterContainer>
       </Wrapper>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <contProd>
+        <Products cat={cat} filters={filters} sort={sort} />
+      </contProd>
       <Announcement />
 
       <Newsletter />

@@ -1,4 +1,5 @@
 import Marquee from "react-fast-marquee";
+import { mobile } from "responsive";
 import { styled } from "styled-components";
 
 const Container = styled.div`
@@ -16,6 +17,8 @@ const Container = styled.div`
   font-size: 14px;
   font-weight: 500;
   z-index: 12;
+ ${mobile({marginTop:"809px",display:"flex" })}
+
 `;
 
 const AnnouncContainer = styled.div`

@@ -6,7 +6,7 @@ import {
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 import { addProduct } from "redux/cartRedux";
 import { useDispatch } from "react-redux";
@@ -50,12 +50,15 @@ const ProductCard = styled(Card)`
     opacity: 1;
   }
   ${mobile({
+    
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",    width: "127px",
+    alignItems: "center",
+    width: "120px",
     height: "100%",
     padding: "0px",
   })}
+ 
 `;
 const ProductImage = styled(Card.Img)`
   width: 100%;

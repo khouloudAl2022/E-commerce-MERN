@@ -9,6 +9,10 @@ const Container = styled.div`
   flex-wrap:wrap;
   justify-content: start;
   margin-left:0.7%;
+  position:relative;
+  
+  ${mobile({ marginTop:"1%",display:"flex",justifyContent:"center" })}
+
  
 `;
 

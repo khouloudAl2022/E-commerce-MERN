@@ -20,7 +20,7 @@ const KEY =
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
-  ${mobile({ padding: "10px" })}
+  ${mobile({ padding: "10px", paddingTop: "12%" })}
 `;
 const Title = styled.h2`
   margin-top: 5%;
@@ -67,20 +67,29 @@ const Summary = styled.div`
 
 const Info = styled.div`
   flex: 3;
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
 `;
 
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+  ${mobile({ flex: "2", display: " flex", flexDirection: "column" })}
 `;
 
 const Image = styled.img`
   width: 200px;
+
+  ${mobile({
+    width: "100%",
+    height: " 200px",
+    display: " flex",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
 `;
 
 const Details = styled.div`
@@ -88,6 +97,12 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  ${mobile({
+    flex: "2",
+    display: " flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+  })}
 `;
 
 const ProductName = styled.span``;
@@ -168,7 +183,7 @@ const SummaryItemPrice = styled.span``;
 const ProductSize = styled.span``;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log( cart);
+  console.log(cart);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -184,9 +199,8 @@ const Cart = () => {
   const onToken = (token) => {
     setStripeToken(token);
   };
-  
+
   //quantities
-   
 
   useEffect(() => {
     const makeRequest = async () => {

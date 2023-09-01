@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
-  
+  ${mobile({ paddingTop: "12%" })}
 `;
 
 const Image = styled.img`
@@ -31,7 +31,7 @@ const Image = styled.img`
   margin-right: 5%;
 
   object-fit: cover;
-  ${mobile({ height: "40vh" })}
+  ${mobile({ height: "100vh" })}
 `;
 
 const InfoContainer = styled.div`
@@ -148,7 +148,7 @@ const Product = () => {
     }
   };
   const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity, color, size}));
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
   return (
     <Container>
@@ -190,8 +190,11 @@ const Product = () => {
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
+          
         </InfoContainer>
+
       </Wrapper>
+      
       <Newsletter />
 
       <Footer />
