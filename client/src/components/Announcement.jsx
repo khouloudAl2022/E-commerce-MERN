@@ -17,8 +17,7 @@ const Container = styled.div`
   font-size: 14px;
   font-weight: 500;
   z-index: 12;
- ${mobile({marginTop:"809px",display:"flex" })}
-
+  ${mobile({ marginTop: "809px" })}
 `;
 
 const AnnouncContainer = styled.div`

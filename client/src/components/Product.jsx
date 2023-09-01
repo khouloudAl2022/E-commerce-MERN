@@ -50,7 +50,6 @@ const ProductCard = styled(Card)`
     opacity: 1;
   }
   ${mobile({
-    
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -58,7 +57,6 @@ const ProductCard = styled(Card)`
     height: "100%",
     padding: "0px",
   })}
- 
 `;
 const ProductImage = styled(Card.Img)`
   width: 100%;
