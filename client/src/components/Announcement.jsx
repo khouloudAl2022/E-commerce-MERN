@@ -3,7 +3,6 @@ import { mobile } from "responsive";
 import { styled } from "styled-components";
 
 const Container = styled.div`
-  margin-top: 640px;
   position: absolute;
   width: 100%;
   height: 30px;

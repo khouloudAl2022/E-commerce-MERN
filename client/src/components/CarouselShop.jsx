@@ -129,7 +129,6 @@ const Slider = () => {
         <Arrow direction="right" onClick={() => handleClick("right")}>
           <KeyboardArrowRightIcon />
         </Arrow>
-        <Announcement />
 
       </Container>
     </>

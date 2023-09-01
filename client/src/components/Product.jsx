@@ -36,7 +36,7 @@ const IconContainer = styled.div`
 `;
 
 const ProductCard = styled(Card)`
-  width: 14rem;
+  width: 15rem;
   position: relative;
   overflow: hidden;
   border: none;
