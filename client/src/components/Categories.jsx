@@ -8,7 +8,7 @@ const Container = styled.div`
   margin-top: 2.5%;
   padding: 0px;
   justify-content: space-between;
-
+  
   ${mobile({
     marginTop: "9%",
     flexDirection: "column",
