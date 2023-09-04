@@ -10,7 +10,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 import { addProduct } from "redux/cartRedux";
 import { useDispatch } from "react-redux";
-import { publicRequest } from "requestMethods";
+import { publicRequest } from "../requestMethods";
 import { useLocation } from "react-router-dom";
 import { mobile } from "responsive";
 

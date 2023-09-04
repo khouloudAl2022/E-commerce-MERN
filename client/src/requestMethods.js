@@ -1,11 +1,13 @@
 import axios from "axios";
 
-const BASE_URL = "https://e-commerce-backend-smg4.onrender.com/api/products/api/";
+const BASE_URL = "https://e-commerce-backend-smg4.onrender.com/api/";
 // const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
 
+const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
+const currentUser = user && JSON.parse(user).currentUser;
+const TOKEN = currentUser?.accessToken;
+
 export const publicRequest = axios.create({ baseURL: BASE_URL });
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdmOGM3MWY4ZTExMTkwZDBhMzU1NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjY0OTk3OSwiZXhwIjoxNjkyNjUwMTU5fQ.fApZDUS-wRNEQUXFkW2kfDPXf54ocuZ1ss9WQAZz1B8";
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,

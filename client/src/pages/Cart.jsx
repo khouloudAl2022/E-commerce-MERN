@@ -13,6 +13,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import CloseIcon from "@mui/icons-material/Close";
 import { removeFromCart } from "redux/cartRedux";
+import { userRequest } from "../requestMethods";
+import PrivateRoute from "Routes/PrivateRoute";
 
 const KEY =
   "pk_test_51NUe30DGVlSZvv6ZwLxCG7iXkShogtjuKDlty1IKf6osiovFmZQnb7l4eLEigBA9E17c6Fxk3UV0UAXclbuuJvP600Pnk5dMFj";
@@ -205,13 +207,10 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await axios.post(
-          "http://localhost:5000/api/checkout/payment",
-          {
-            tokenId: stripeToken.id,
-            amount: cart.total * 1000,
-          }
-        );
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 1000,
+        });
         console.log(res.data);
         navigate("/success", {
           state: { stripeData: res.data, products: cart },
